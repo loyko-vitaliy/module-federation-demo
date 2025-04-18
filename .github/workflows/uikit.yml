@@ -14,31 +14,34 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-
+          
       - name: Setup nodejs
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
-
+          
       - name: Install dependencies
         run: pnpm install
-
+        
       - name: Build
         working-directory: uikit
         run: pnpm build
-
+        
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+        
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
-          working-directory: uikit
+        working-directory: uikit
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          vercel deploy --token=$VERCEL_TOKEN --prod --cwd .
