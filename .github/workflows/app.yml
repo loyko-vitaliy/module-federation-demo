@@ -48,4 +48,4 @@ jobs:
 
       - name: Invalidate CloudFront Distribution
         run: |
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/app/latest/index.html"
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/app/latest/*"
