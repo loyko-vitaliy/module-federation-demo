@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Input, Logo, Typography } from './components';
+import { Input, Link, Logo, Typography } from './components';
 
 import './global.module.css';
 
@@ -15,6 +15,7 @@ if (rootEl) {
       <Logo />
       <Typography variant="h1">UIKit</Typography>
       <Input />
+      <Link href="#">Link</Link>
     </React.StrictMode>,
   );
 }
