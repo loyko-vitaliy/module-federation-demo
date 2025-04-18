@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Input, Typography } from './components';
+import { Input, Logo, Typography } from './components';
 
 import './global.module.css';
 
@@ -12,6 +12,7 @@ if (rootEl) {
 
   root.render(
     <React.StrictMode>
+      <Logo />
       <Typography variant="h1">UIKit</Typography>
       <Input />
     </React.StrictMode>,
