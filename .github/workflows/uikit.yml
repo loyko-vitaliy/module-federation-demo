@@ -34,14 +34,18 @@ jobs:
         working-directory: uikit
         run: pnpm build
         
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-        
-      - name: Deploy to Vercel
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to AWS S3
         working-directory: uikit
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.UIKIT_VERCEL_PROJECT_ID }}
         run: |
-          vercel deploy --token=$VERCEL_TOKEN --prod --cwd .
+          aws s3 sync dist s3://${{ secrets.AWS_BUCKET_NAME }}/uikit/latest --delete 
+
+      - name: Invalidate CloudFront Distribution
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/uikit/latest/*"
