@@ -10,5 +10,6 @@ export default defineConfig({
     cssModules: {
       namedExport: true,
     },
+    assetPrefix: '/app/latest',
   },
 });
