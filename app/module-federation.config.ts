@@ -1,5 +1,7 @@
 import { createModuleFederationConfig } from '@module-federation/rsbuild-plugin';
 
+console.log('DEBUG', import.meta.env);
+
 const { PUBLIC_APPBAR_REMOTE_URL, PUBLIC_FEED_REMOTE_URL, PUBLIC_UIKIT_REMOTE_URL } = import.meta.env;
 
 export default createModuleFederationConfig({

@@ -6,8 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import './global.module.css';
 
-console.log('DEBUG', import.meta.env);
-
 const rootEl = document.getElementById('root');
 
 if (rootEl) {
