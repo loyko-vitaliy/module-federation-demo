@@ -1,11 +1,11 @@
-name: deploy-uikit
+name: deploy-appbar
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'uikit/**'
+      - 'appbar/**'
 
 jobs:
   build:
@@ -31,17 +31,17 @@ jobs:
         run: pnpm install
         
       - name: Build
-        working-directory: uikit
+        working-directory: appbar
         run: pnpm build
         
       - name: Install Vercel CLI
         run: npm install -g vercel
         
       - name: Deploy to Vercel
-        working-directory: uikit
+        working-directory: appbar
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.UIKIT_VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.APPBAR_VERCEL_PROJECT_ID }}
         run: |
           vercel deploy --token=$VERCEL_TOKEN --prod --cwd .
