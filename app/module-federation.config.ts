@@ -2,8 +2,6 @@ import { createModuleFederationConfig } from '@module-federation/rsbuild-plugin'
 
 const { PUBLIC_APPBAR_REMOTE_URL, PUBLIC_FEED_REMOTE_URL, PUBLIC_UIKIT_REMOTE_URL } = process.env;
 
-console.log('DEBUG', PUBLIC_APPBAR_REMOTE_URL);
-
 export default createModuleFederationConfig({
   name: 'app',
   remotes: {
