@@ -5,7 +5,7 @@ const { PUBLIC_APPBAR_REMOTE_URL, PUBLIC_FEED_REMOTE_URL, PUBLIC_UIKIT_REMOTE_UR
 export default createModuleFederationConfig({
   name: 'app',
   remotes: {
-    appbar: 'appbar@https://d2vrgopldpjfzy.cloudfront.net/latest/appbar/mf-manifest.json',
+    appbar: 'appbar@https://d2vrgopldpjfzy.cloudfront.net/appbar/latest/mf-manifest.json',
     feed: `feed@${PUBLIC_FEED_REMOTE_URL}/mf-manifest.json`,
     uikit: `uikit@${PUBLIC_UIKIT_REMOTE_URL}/mf-manifest.json`,
   },
