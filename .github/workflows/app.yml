@@ -6,14 +6,16 @@ on:
       - main
     paths:
       - 'app/**'
-      -
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     env:
       PUBLIC_APPBAR_REMOTE_URL: ${{ vars.PUBLIC_APPBAR_REMOTE_URL }}
       PUBLIC_FEED_REMOTE_URL: ${{ vars.PUBLIC_FEED_REMOTE_URL }}
       PUBLIC_UIKIT_REMOTE_URL: ${{ vars.PUBLIC_UIKIT_REMOTE_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      PUBLIC_UIKIT_REMOTE_URL: ${{ vars.PUBLIC_UIKIT_REMOTE_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
