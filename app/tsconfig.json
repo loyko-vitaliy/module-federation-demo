@@ -16,7 +16,8 @@
     "noUnusedParameters": true,
     "paths": {
       "*": ["./@mf-types/*"]
-    }
+    },
+    "typeRoots": ["src/env.d.ts"]
   },
-  "include": ["src", "module-federation.config.ts"]
+  "include": ["src"]
 }
